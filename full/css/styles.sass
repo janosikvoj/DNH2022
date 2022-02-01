@@ -1,0 +1,469 @@
+$dm-sans: 'DM Sans', sans-serif
+$fraunces: 'Fraunces', serif
+    
+body
+    margin: 0
+    padding: 0
+    overflow: hidden
+    position: relative
+    background-color: black
+    font-family: $dm-sans
+    color: white
+
+.welcome-container
+    position: absolute    
+    z-index: 3
+    transition: all 250ms ease-in-out
+    width: 100vw
+    height: 100vh
+    pointer-events: none
+    .sipecka
+        position: absolute
+        bottom: 60px
+        left: 50vw
+        transform: translateX(-50%)
+    .scroll
+        position: absolute
+        bottom: 20px
+        left: 50vw
+        transform: translateX(-50%)
+.faded
+    opacity: 0
+    transform: translateY(-60px)
+
+.page-wrapper
+    position: absolute
+    width: 100vw
+    height: 100vh
+
+canvas
+    position: absolute
+    top: 0
+    transform: translateX(-50%)
+    left: 50%
+
+
+.mySwiper
+    width: inherit
+    height: inherit
+    position: absolute
+    .swiper-slide
+        svg
+            // transform: translateY(-150%)
+            polygon
+                mix-blend-mode: screen
+            polygon.red
+                fill: rgb(255, 0, 0)
+            polygon.green
+                fill: rgb(0, 255, 0)
+            polygon.blue
+                fill: rgb(0, 0, 255)
+    .swiper-slide.index-01
+        div
+            position: absolute
+            
+            font-family: $fraunces
+            font-size: 35pt
+            line-height: 1
+            mix-blend-mode: difference
+            cursor: default
+        div.misto
+            left: 50vw
+            top: 50vh
+            text-align: left
+
+            color: rgb(255, 0, 0)
+        div.datum
+            left: 40vw
+            top: 50vh
+            transform: translateY(-100%)
+            text-align: right
+
+            color: rgb(0, 255, 0)
+        div.rocnik
+            bottom: 5px
+            left: 0
+            transform: rotate(270deg) translateY(40px)
+            transform-origin: 0 0
+
+            color: rgb(0, 0, 255)
+            font-size: 18px
+            font-family: $dm-sans
+            font-weight: 500
+            line-height: 1.2
+    .swiper-slide.index-02
+        svg
+            position: absolute
+            polygon
+                transform: translate(2%, 2%) rotate(-4deg)
+                opacity: 0
+                transition: opacity 2s cubic-bezier(0.550, 0.055, 0.675, 0.190)
+            polygon:hover
+                opacity: 1
+                transition: none
+        div.quote
+            position: absolute
+            width: 35vw
+            max-width: 900px
+            margin: 0px 40px 40px 40px
+            pointer-events: none
+
+            color: rgb(0, 0, 255)
+            mix-blend-mode: difference
+            font-family: $dm-sans
+            font-size: 20pt
+            text-align: right
+
+            transition: color 500ms linear
+            p
+                font-size: 35pt
+                font-family: $fraunces
+                text-align: left
+        div.body-text
+            position: absolute
+            right: 0px
+            width: 35vw
+            max-width: 400px
+            margin: 40px 80px 40px 80px
+            .body-text-item
+                width: 25vw
+                max-width: 300px
+                margin: 0px 0px 40px 0px
+                h1
+                    font-size: 28px
+                    margin: 0
+                    padding: 0
+                    margin-bottom: 10px
+                p
+                    font-size: 16px
+                    margin: 0
+                    padding: 0
+            .index-01
+                margin-left: 100px
+            .index-02
+                margin-left: 50px
+            .index-03
+                margin-left: 0vw
+    .swiper1-pagination
+        background-color: rgba(0, 0, 0, .85)
+        padding: 0px 14px 0px 30px
+        border-radius: 10px 0px 0px 10px
+        right: 0px
+        .swiper-pagination-bullet
+            background-color: white
+            margin: 80px 0px
+            opacity: .15
+            width: 16px
+            height: 12px
+            border-radius: 2.5px
+        .swiper-pagination-bullet-active
+            background-color: white
+            opacity: 1
+            transform: translateX(-10px) scale(1.5, 0.5)
+            transition: transform 400ms cubic-bezier(0.680, -0.550, 0.265, 2.35)
+    .swiper-slide.index-03
+        svg
+            position: absolute
+            top: 50vh
+            left: 50vw
+            transform: translateX(-50%) translateY(-50%)
+            width: 320px+200px
+            height: 480px+200px
+            pointer-events: none
+            z-index: 10
+            mix-blend-mode: screen
+        .mySwiper2
+            position: absolute
+            width: 100vw
+            height: 100vh
+            font-family: $dm-sans
+            font-size: 24pt
+
+            .card-container
+                position: absolute
+                top: 50vh
+                transform: translateY(-50%)
+                left: calc(50vw - 160px)
+                width: 240px
+                height: 400px
+                padding: 40px
+                z-index: 5
+
+                display: flex
+                justify-content: flex-end
+                align-items: center
+                flex-direction: column
+
+                color: black
+                font-family: $dm-sans
+                border-radius: 7.5px
+                .img
+                    transition: opacity 600ms ease-in
+                    position: absolute
+                    top: 60px
+                    left: 60px
+                    width: 200px
+                    height: 200px
+                    background-repeat: no-repeat
+                    background-size: 100% auto
+                    background-position: center
+                .jmeno
+                    font-size: 34px
+                    font-family: $fraunces
+                    font-weight: 500
+                    text-align: center
+                    line-height: 1
+                .obor
+                    margin-top: 20px
+                    font-size: 18px
+                    font-weight: 500
+                    text-align: center
+                .description
+                    transition: opacity 300ms ease-in
+                    position: absolute
+                    opacity: 0
+                    font-size: 16px
+                    top: 0
+                    padding: 40px
+            .card-container:hover
+                .img
+                    transition: opacity 200ms ease-in
+                    opacity: 0
+                .description
+                    transition: opacity 400ms ease-in
+                    opacity: 1
+            .card-container.index-03-01
+                background-color: rgb(0, 255, 0)
+                .img
+                    background-image: url("../img/portrait01.png")
+            .card-container.index-03-02
+                background-color: rgb(255, 0, 0)
+                .img
+                    background-image: url("../img/portrait02.png")
+            .card-container.index-03-03
+                background-color: rgb(0, 0, 255)
+                .img
+                    background-image: url("../img/portrait03.png")
+            .card-container.index-03-04
+                background-color: rgb(0, 255, 0)
+                .img
+                    background-image: url("../img/portrait01.png")
+            .card-container.index-03-05
+                background-color: rgb(255, 0, 0)
+                .img
+                    background-image: url("../img/portrait02.png")
+            .card-container.index-03-06
+                background-color: rgb(0, 0, 255)
+                .img
+                    background-image: url("../img/portrait03.png")
+            .swiper-button-next
+                width: 60px
+                height: 40px
+                padding: 10px 0px
+                transform: translateX(-100px)
+                transition: transform 100ms ease-in-out
+                background-image: url("../img/sipecka_vector_right.svg")
+                background-repeat: no-repeat
+                background-size: 100% auto
+                background-position: center
+            .swiper-button-next:hover
+                transform: translateX(-90px)
+                transition: transform 100ms ease-in-out
+            .swiper-button-next::after
+                display: none
+            .swiper-button-prev
+                width: 60px
+                height: 40px
+                padding: 10px 0px
+                transform: translateX(100px)
+                transition: transform 100ms ease-in-out
+                background-image: url("../img/sipecka_vector_left.svg")
+                background-repeat: no-repeat
+                background-size: 100% auto
+                background-position: center
+            .swiper-button-prev:hover
+                transform: translateX(90px)
+                transition: transform 100ms ease-in-out
+            .swiper-button-prev::after
+                display: none
+            .swiper2-pagination
+                transform: translateY(-60px)
+                .swiper-pagination-bullet
+                    margin: 10px
+                    background-color: white
+                    opacity: .15
+                    width: 14px
+                    height: 14px
+                    border-radius: 1px
+                .swiper-pagination-bullet-active
+                    transform: rotate(45deg)
+                    opacity: 1
+                    border-radius: 2px
+                    transition: all 400ms cubic-bezier(0.680, -0.550, 0.265, 2.35)
+    .swiper-slide.index-04
+        .timeline-container
+            height: inherit
+            margin: 40px 30px 40px 10px
+
+            display: flex
+            flex-wrap: nowrap
+            justify-content: space-between
+            .timeline-item
+                margin: 0px 30px
+                flex-grow: 1
+                max-width: calc((100vw - 220px)/3)
+                height: calc(100vh - 80px)
+                overflow: hidden
+                position: relative
+                ul
+                    list-style-type: none
+                    margin: 0
+                    padding: 0
+                    border-radius: 7.5px
+                    padding: 20px
+                    li
+                        margin-bottom: 40px
+                        .time
+                            margin-right: 7.5px
+                            font-family: $dm-sans
+                            font-size: 20px
+                            font-weight: 600
+                            color: black
+                        .jmeno
+                            font-family: $fraunces
+                            font-size: 28px
+                            font-weight: 400
+                            color: black
+                        .info
+                            margin: 10px 0px 0px 20px
+                            color: black
+                            font-weight: 500
+                        &.posledni 
+                            margin: 0px
+            .timeline-item.part-01
+                .img-wrapper
+                    transform-origin: 0 0
+                    transform: scale(.5)
+                    img
+                        position: absolute
+                        transition: all 350ms ease-in-out
+                    .text-white
+                        z-index: 10
+                        opacity: 0
+                    .text
+                        z-index: 9
+                    .dekorace
+                        z-index: 8
+                    &:hover
+                        .text-white
+                            opacity: 1
+                        .text
+                            opacity: 0
+                        .dekorace
+                            opacity: 0
+                            transform: rotate(180deg) scale(.5)
+                .mapa
+                    position: absolute
+                    display: block
+                    bottom: 140px
+                    color: black
+                    background-color: white
+                    border-radius: 10px
+                    padding: 5px 20px
+                    margin-bottom: 60px
+                    text-decoration: none
+                    font-weight: 600
+                    font-size: 16px
+                    transition: background-color 150ms ease-in-out
+                    &:hover
+                        background-color: rgb(0, 0, 255)
+                .sipecka-up
+                    position: absolute
+                    display: block
+                    bottom: 125px
+                    height: 40px
+                    font-family: $fraunces
+                    font-size: 35pt
+                    line-height: 1
+                    color: rgb(255, 0, 0)
+                    transform: translateX(-50%) translateX(5px)
+                .misto
+                    position: absolute
+                    display: block
+                    bottom: 0
+                    font-family: $fraunces
+                    font-size: 35pt
+                    line-height: 1
+                    color: rgb(255, 0, 0)
+            .timeline-item.part-02
+                display: flex
+                flex-direction: column
+                justify-content: flex-start
+                ul
+                    background-color: rgba(0,0,255,0)
+                    background-image: linear-gradient(0deg, rgba(0,0,255,.2) 0%, rgba(0,0,255,.05) 100%)
+                    transition: background-color 350ms ease-out
+                    &:hover
+                        background-color: rgba(0,0,255,1)
+            .timeline-item.part-03
+                display: flex
+                flex-direction: column
+                justify-content: flex-end
+                ul
+                    background-color: rgba(255,255,255,0)
+                    background-image: linear-gradient(0deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.2) 100%)
+                    transition: background-color 350ms ease-out
+                    &:hover
+                        background-color: rgba(255,255,255,1)
+                    li
+                        margin-bottom: 0px
+                        margin-top: 40px
+                        &.posledni
+                            margin: 0px
+    .swiper-slide.index-05
+        display: flex
+        justify-content: center
+        align-items: center 
+        div.poradatel
+            width: 30vw
+            max-width: 500px
+            a
+                margin-top: 4px
+                font-weight: 600
+                text-decoration: none
+                color: white
+                transition: color 250ms ease-out
+                &:hover
+                    color: rgb(255, 0, 0)
+        div.soc-site
+            position: absolute
+            margin-left: 40px
+            top: 50vh
+            transform: translateY(-50%)
+            left: 0
+            img
+                height: 20px
+                width: 20px
+                display: block
+                margin: 10px 0px
+            a
+                display: block
+                margin: 2px 0px
+                color: white
+                text-decoration: none
+                transition: color 250ms ease-out
+                &:hover
+                    color: rgb(0, 0, 255)
+        div.logos
+            position: absolute
+            width: calc(100vw - 80px)
+            height: 80px
+            margin: 40px 0px
+            padding: 0px 40px
+            bottom: 0
+
+            display: flex
+            justify-content: space-evenly
+            img.logo
+                height: 80px
+        
