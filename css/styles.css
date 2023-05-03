@@ -1,0 +1,445 @@
+/* ===== Modules ===== */
+/* ===== Variables ===== */
+/* ===== Setup ===== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Switzer-Variable, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.1rem;
+  overflow: hidden;
+}
+
+body {
+  background-color: #e2e5e2;
+  padding: 32px;
+  color: #5b6a5e;
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 64px;
+}
+.layout > :nth-child(1) {
+  height: 100%;
+  width: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.layout > :nth-child(1) > :nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  background-color: #ebf5ed;
+  border-radius: 16px;
+  padding: 16px;
+}
+.layout > :nth-child(1) > :nth-child(2) > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: color 200ms ease-out;
+}
+.layout > :nth-child(1) > :nth-child(2) > div > div {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  border-radius: 10px;
+  background-color: #c5cbc6;
+}
+.layout > :nth-child(1) > :nth-child(2) > div > div > div {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  top: 5px;
+  left: 5px;
+  transform: rotate(0deg);
+  background-color: #8e9990;
+  transition: transform 200ms ease-out, background-color 200ms ease-out;
+}
+.layout > :nth-child(1) > :nth-child(2) > div:hover {
+  color: #5b6a5e;
+  font-weight: 500;
+}
+.layout > :nth-child(1) > :nth-child(2) > div:hover > div > div {
+  transform: rotate(22.5deg);
+  background-color: #5b6a5e;
+}
+.layout > :nth-child(1) > :nth-child(2) > div.selected {
+  color: #2b3f30;
+  font-weight: 500;
+}
+.layout > :nth-child(1) > :nth-child(2) > div.selected > div > div {
+  transform: rotate(45deg);
+  background-color: #2b3f30;
+}
+.layout > :nth-child(1) > :nth-child(3) {
+  opacity: 0;
+  height: 0;
+  background-color: #ebf5ed;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+.layout > :nth-child(1) > :nth-child(3) > img {
+  margin: 8px;
+}
+.layout > :nth-child(1) > :nth-child(3) > span {
+  margin: 8px;
+  font-size: 0.8rem;
+}
+.layout > :nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+.layout > :nth-child(2) .animationContainer {
+  margin: 32px;
+  height: 60%;
+}
+.layout > :nth-child(2) .animationContainer svg {
+  position: absolute;
+  overflow: visible;
+}
+.layout > :nth-child(2) .animationContainer svg path {
+  fill: none;
+  stroke: #1E9A4F;
+  stroke-width: 7.5px;
+  stroke-linecap: round;
+}
+.layout > :nth-child(2) .animationContainer svg rect {
+  fill: #011707;
+  animation: move 3s linear infinite;
+}
+@keyframes move {
+  100% {
+    motion-offset: 100%;
+    offset-distance: 100%;
+  }
+}
+.layout > :nth-child(2) .animationContainer svg .handleLinesGroup line {
+  fill: none;
+  stroke: #c5cbc6;
+  stroke-width: 3.75px;
+  transition: all 200ms ease-out;
+}
+.layout > :nth-child(2) .animationContainer svg .moveabePoint circle {
+  fill: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: fill 200ms ease-out, transform 200ms ease-out;
+}
+.layout > :nth-child(2) .animationContainer svg .moveabePoint rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  fill: #137138;
+  pointer-events: none;
+  transition: fill 200ms ease-out, transform 200ms ease-out;
+}
+.layout > :nth-child(2) .animationContainer svg .moveabePoint:hover circle {
+  fill: #9bcda6;
+}
+.layout > :nth-child(2) .animationContainer svg .moveabePoint:hover rect {
+  fill: #137138;
+  transform: rotate(45deg);
+}
+.layout > :nth-child(2) .animationContainer svg .draggingCP circle {
+  fill: #9bcda6;
+}
+.layout > :nth-child(2) .animationContainer svg .draggingCP rect {
+  fill: #137138;
+  transform: rotate(45deg);
+}
+.layout > :nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 64px;
+}
+.layout > :nth-child(3) > :nth-child(1) {
+  background-color: #ebf5ed;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.layout > :nth-child(3) > :nth-child(1) > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+.layout > :nth-child(3) > :nth-child(1) > div > :nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.layout > :nth-child(3) > :nth-child(1) > div > :nth-child(1) > :nth-child(2) {
+  font-weight: 500;
+  color: #2b3f30;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(1) > :nth-child(2) .animLengthSlider {
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 3.75px;
+  background-color: #e2e5e2;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(1) > :nth-child(2) .animLengthSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: url(../img/slider_detail.svg) no-repeat center center;
+  background-color: #e2e5e2;
+  -webkit-transition: 200ms all ease-out;
+  transition: 200ms all ease-out;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(1) > :nth-child(2) .animLengthSlider::-webkit-slider-thumb:hover {
+  background-color: #c5cbc6;
+  transform: rotate(45deg);
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(1) > :nth-child(2) .animLengthSlider::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: url(../img/slider_detail.svg) no-repeat center center;
+  background-color: #e2e5e2;
+  border-radius: 16px;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(1) > :nth-child(2) .animLengthSlider::-moz-range-thumb:hover {
+  background-color: #c5cbc6;
+  transform: rotate(45deg);
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: #2b3f30;
+  fill: #2b3f30;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: Switzer-Variable, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector .select__trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: #c5cbc6;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector .select__trigger:hover {
+  background-color: #a9b2ab;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector .arrow {
+  transition: transform 200ms ease-out;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .open .arrow {
+  transform: rotate(180deg);
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .custom-options {
+  position: absolute;
+  display: block;
+  top: 100%;
+  background-color: #c5cbc6;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2;
+  transform-origin: top;
+  border-radius: 0px 0px 2px 2px;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector.open .custom-options {
+  visibility: visible;
+  pointer-events: all;
+  color: #2b3f30;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector.open .custom-options :last-child {
+  border-radius: 0px 0px 2px 2px;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .presetsSelector.open .select__trigger {
+  border-radius: 2px 2px 0px 0px;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .custom-option {
+  position: relative;
+  display: block;
+  padding: 8px;
+  cursor: pointer;
+  font-weight: 400;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .custom-option:hover {
+  cursor: pointer;
+  background-color: #a9b2ab;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(2) .custom-option.presetSelected {
+  color: #ebf5ed;
+  background-color: #5b6a5e;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(3) > :nth-child(2) {
+  padding: 8px 16px;
+  border-radius: 2px;
+  background-color: #e2e5e2;
+  width: 100%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: 500;
+  color: #2b3f30;
+  cursor: pointer;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(3) > :nth-child(2):hover {
+  background-color: #c5cbc6;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(4) > :nth-child(2) {
+  display: flex;
+  gap: 16px;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(4) > :nth-child(2) div {
+  background-color: #c5cbc6;
+  color: #2b3f30;
+  fill: #2b3f30;
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(4) > :nth-child(2) div:hover {
+  background-color: #a9b2ab;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(4) > :nth-child(2) div:active {
+  background-color: #8e9990;
+}
+.layout > :nth-child(3) > :nth-child(1) > :nth-child(4) .animControlIconDisplayNone {
+  display: none;
+}
+.layout > :nth-child(3) > :nth-child(2) {
+  margin: 0px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: Switzer-Variable, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a9b2ab;
+}
+.layout > :nth-child(3) > :nth-child(2) span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.layout > :nth-child(3) > :nth-child(2) div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.layout > :nth-child(3) > :nth-child(2) div span {
+  writing-mode: vertical-rl;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg {
+  width: 150px;
+  overflow: visible;
+  stroke: #c5cbc6;
+  stroke-width: 3.75px;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg path {
+  stroke: #748177;
+  fill: none;
+  stroke-linecap: round;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg line {
+  fill: none;
+  stroke-linecap: round;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg .easingFuncHandle circle {
+  opacity: 0;
+  fill: #c5cbc6;
+  stroke: none;
+  transition: opacity 200ms ease-out;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg .easingFuncHandle rect {
+  fill: #5b6a5e;
+  stroke: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 200ms ease-out;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg .easingFuncHandle:hover {
+  cursor: pointer;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg .easingFuncHandle:hover circle {
+  opacity: 1;
+}
+.layout > :nth-child(3) > :nth-child(2) div svg .easingFuncHandle:hover rect {
+  transform: rotate(45deg);
+}
+.layout > :nth-child(3) > :nth-child(2) div > :nth-child(3) {
+  opacity: 0;
+}
+.layout .grow1 {
+  flex-grow: 1;
+}
+.layout .grow2 {
+  flex-grow: 2;
+}
+.layout .grow5 {
+  flex-grow: 5;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #748177;
+  color: #e2e5e2;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 1rem !important;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 10;
+  fill: #e2e5e2;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

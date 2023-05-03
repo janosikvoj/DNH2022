@@ -1,0 +1,499 @@
+/* ===== Modules ===== */
+@use "sass:color"
+  
+/* ===== Variables ===== */
+$garnish-120: #137138
+$garnish-110: #198544
+$garnish-100: #1E9A4F
+$garnish-90: #41a460
+$garnish-80: #5aaf72
+$garnish-70: #71b983
+$garnish-60: #86c394
+$garnish-50: #9bcda6
+$garnish-40: #afd7b7
+$garnish-30: #c3e1c9
+$garnish-20: #d7ebdb
+$garnish-10: #ebf5ed
+
+$oil-slick-100: #011707
+$oil-slick-90: #142a1a
+$oil-slick-80: #2b3f30
+$oil-slick-70: #425446
+$oil-slick-60: #5b6a5e
+$oil-slick-50: #748177
+$oil-slick-40: #8e9990
+$oil-slick-30: #a9b2ab
+$oil-slick-20: #c5cbc6
+$oil-slick-10: #e2e5e2
+
+$font-stack: Switzer-Variable, Helvetica, Arial, sans-serif
+$grid-margin: 48px
+
+/* ===== Setup ===== */
+*
+  box-sizing: border-box
+
+html, body
+  margin: 0
+  height: 100%
+  font-family: $font-stack
+  font-size: 18px
+  line-height: 1.1rem
+  overflow: hidden
+
+body
+  background-color: $oil-slick-10
+  padding: 32px
+  color: $oil-slick-60
+
+/* ===== Layout ===== */
+.layout
+  display: flex
+  align-items: stretch
+  height: 100%
+  gap: 64px
+
+  >:nth-child(1)    
+    height: 100%
+    width: 0px
+
+    display: flex
+    flex-direction: column
+
+    justify-content: space-between
+
+    >:nth-child(2)
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      gap: 32px
+
+      background-color: $garnish-10
+      border-radius: 16px
+      padding: 16px
+
+      >div
+        display: flex
+        flex-direction: row
+        align-items: center
+        gap: 8px
+        padding: 8px
+
+        cursor: pointer
+        transition: color 200ms ease-out
+
+        >div
+          width: 20px
+          min-width: 20px
+          height: 20px
+          min-height: 20px
+          border-radius: 10px
+
+          background-color: $oil-slick-20
+
+          >div
+            position: relative
+            width: 10px
+            height: 10px
+            border-radius: 2px
+            top: 5px
+            left: 5px
+
+            transform: rotate(0deg)
+            background-color: $oil-slick-40
+            transition: transform 200ms ease-out, background-color 200ms ease-out
+
+      >div:hover
+        color: $oil-slick-60
+        font-weight: 500
+        >div
+          >div
+            transform: rotate(calc(45deg/2))
+            background-color: $oil-slick-60
+
+      >div.selected
+        color: $oil-slick-80
+        font-weight: 500
+        >div
+          >div
+            transform: rotate(calc(45deg))
+            background-color: $oil-slick-80
+
+
+    >:nth-child(3)
+      opacity: 0
+      height: 0
+
+      background-color: $garnish-10
+      border-radius: 16px
+      padding: 16px
+
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      gap: 16px
+
+      cursor: pointer
+
+      >img
+        margin: 8px
+      
+      >span
+        margin: 8px
+        font-size: 0.8rem
+
+  >:nth-child(2)    
+    display: flex
+    flex-direction: column
+    justify-content: center
+    width: 50%
+    .animationContainer
+      margin: 32px
+      height: 60%
+
+      svg
+        position: absolute
+        overflow: visible
+
+        path
+          fill: none
+          stroke: $garnish-100
+          stroke-width: 7.5px 
+          stroke-linecap: round
+
+        rect
+          fill: $oil-slick-100
+          animation: move 3s linear infinite
+
+        @keyframes move
+          100%
+            motion-offset: 100%
+            offset-distance: 100%
+
+        .handleLinesGroup
+          line
+            fill: none
+            stroke: $oil-slick-20
+            stroke-width: calc( 7.5px / 2)
+            transition: all 200ms ease-out
+
+        .moveabePoint
+          circle
+            fill: rgba(0, 0, 0, 0)
+            cursor: pointer
+            transition: fill 200ms ease-out, transform 200ms ease-out
+          rect
+            transform-box: fill-box
+            transform-origin: center
+            fill: $garnish-120
+            pointer-events: none
+            transition: fill 200ms ease-out, transform 200ms ease-out
+
+        .moveabePoint:hover
+          circle
+            fill: $garnish-50
+          rect
+            fill: $garnish-120
+            transform: rotate(45deg)
+
+        .draggingCP
+          circle
+            fill: $garnish-50
+          rect
+            fill: $garnish-120
+            transform: rotate(45deg)
+
+  >:nth-child(3)    
+    display: flex
+    flex-direction: column
+    justify-content: center
+    gap: 64px
+
+    >:nth-child(1)
+      background-color: $garnish-10
+      padding: 16px
+      border-radius: 16px
+      
+      display: flex
+      flex-direction: column
+      gap: 32px
+
+      >div
+        display: flex
+        flex-direction: column
+        gap: 8px
+        padding: 8px
+
+        >:nth-child(1)
+          display: flex
+          flex-direction: row
+          justify-content: space-between
+
+          >:nth-child(2)
+            font-weight: 500
+            color: $oil-slick-80
+      
+      >:nth-child(1)
+        >:nth-child(2)
+          .animLengthSlider
+            width: 100%
+            appearance: none
+            height: 3.75px
+            background-color: $oil-slick-10
+
+          .animLengthSlider::-webkit-slider-thumb
+            appearance: none
+            width: 32px
+            height: 32px
+            cursor: pointer
+            border-radius: 16px
+            background: url(../img/slider_detail.svg) no-repeat center center
+            background-color: $oil-slick-10
+
+            transition: 200ms all ease-out
+
+          .animLengthSlider::-webkit-slider-thumb:hover
+            background-color: $oil-slick-20
+            transform: rotate(45deg)
+
+          .animLengthSlider::-moz-range-thumb
+            width: 32px
+            height: 32px
+            cursor: pointer
+            background: url(../img/slider_detail.svg) no-repeat center center
+            background-color: $oil-slick-10 
+            border-radius: 16px
+
+          .animLengthSlider::-moz-range-thumb:hover
+            background-color: $oil-slick-20
+            transform: rotate(45deg)
+
+      >:nth-child(2)
+        .presetsSelector
+          position: relative
+          display: flex
+          flex-direction: column
+          color: $oil-slick-80
+          fill: $oil-slick-80
+          background-color: rgba(0, 0, 0, 0)
+
+          font-family: $font-stack
+          font-size: 18px
+          font-weight: 500
+
+          .select__trigger
+            position: relative
+            display: flex
+            align-items: center
+            justify-content: space-between
+            padding: 8px
+            background-color: $oil-slick-20
+            border-radius: 2px
+            cursor: pointer
+
+          .select__trigger:hover
+            background-color: $oil-slick-30
+
+          .arrow
+            transition: transform 200ms ease-out
+          
+        .open .arrow
+          transform: rotate(180deg)
+        
+        .custom-options
+          position: absolute
+          display: block
+          top: 100%
+          background-color: $oil-slick-20
+          left: 0
+          right: 0
+          visibility: hidden
+          pointer-events: none
+          z-index: 2
+          transform-origin: top
+          border-radius: 0px 0px 2px 2px
+
+        .presetsSelector.open .custom-options
+          visibility: visible
+          pointer-events: all
+          color: $oil-slick-80
+
+          :last-child
+            border-radius: 0px 0px 2px 2px
+
+        .presetsSelector.open .select__trigger
+            border-radius: 2px 2px 0px 0px
+        
+        .custom-option
+          position: relative
+          display: block
+          padding: 8px
+          cursor: pointer
+
+          font-weight: 400
+        
+        .custom-option:hover
+          cursor: pointer
+          background-color: $oil-slick-30
+        
+        .custom-option.presetSelected
+          color: $garnish-10
+          background-color: $oil-slick-60
+            
+      >:nth-child(3)
+        >:nth-child(2)
+          padding: 8px 16px
+          border-radius: 2px
+          background-color: $oil-slick-10
+          width: 100%
+          min-width: 320px
+          display: flex
+          flex-direction: row
+          justify-content: center
+
+          font-weight: 500
+          color: $oil-slick-80
+
+          cursor: pointer
+
+        >:nth-child(2):hover
+          background-color: $oil-slick-20
+            
+      >:nth-child(4)
+        >:nth-child(2)
+          display: flex
+          gap: 16px
+          div
+            background-color: $oil-slick-20
+            color: $oil-slick-80
+            fill: $oil-slick-80
+            flex: 1
+            padding: 8px
+            display: flex
+            align-items: center
+            justify-content: center
+            border-radius: 2px
+            cursor: pointer
+          div:hover
+            background-color: $oil-slick-30
+          div:active
+            background-color: $oil-slick-40
+        .animControlIconDisplayNone
+          display: none
+
+    >:nth-child(2)
+      margin: 0px 32px
+      display: flex
+      flex-direction: column
+      gap: 16px
+      
+      font-family: $font-stack
+      font-size: 12px
+      font-weight: 700
+      color: $oil-slick-30
+
+      span
+        display: flex
+        align-items: center
+        justify-content: center
+        pointer-events: none
+
+      div
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        gap: 16px
+
+        span
+          writing-mode: vertical-rl
+
+        svg
+          width: 150px
+          overflow: visible
+          stroke: $oil-slick-20
+          stroke-width: 3.75px
+
+          path
+            stroke: $oil-slick-50
+            fill: none
+            stroke-linecap: round
+
+          line
+            fill: none
+            stroke-linecap: round
+
+          .easingFuncHandle
+            circle
+              opacity: 0
+              fill: $oil-slick-20
+              stroke: none
+              transition: opacity 200ms ease-out
+            rect
+              fill: $oil-slick-60
+              stroke: none
+              transform-box: fill-box
+              transform-origin: center
+              transition: transform 200ms ease-out
+
+          .easingFuncHandle:hover
+            cursor: pointer
+            circle
+              opacity: 1
+            rect
+              transform: rotate(45deg)
+
+        >:nth-child(3)
+          opacity: 0
+
+  .grow1
+    flex-grow: 1
+  .grow2
+    flex-grow: 2
+  .grow5
+    flex-grow: 5
+
+// /* ===== Scrollbar CSS ===== */
+// /* Firefox */
+// body 
+//   scrollbar-width: auto
+//   scrollbar-color: $primary-color #ffffff
+
+// /* Chrome, Edge, and Safari */
+// body::-webkit-scrollbar
+//   width: 10px
+
+// body::-webkit-scrollbar-track
+//   background: #ffffff
+
+// body::-webkit-scrollbar-thumb
+//   background-color: $primary-color
+//   border-radius: 0px
+//   border: 0px none #ffffff
+
+// /* ===== Tooltip ===== */
+
+/* Tooltip text */
+.tooltip .tooltiptext
+  visibility: hidden
+  background-color: $oil-slick-50
+  color: $oil-slick-10
+  white-space: nowrap
+  display: flex
+  align-items: center
+  gap: 8px
+  padding: 12px
+  border-radius: 8px
+
+  font-weight: 400
+  font-size: 1rem !important
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute
+  z-index: 10
+  fill: $oil-slick-10
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext
+  visibility: visible
